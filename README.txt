@@ -94,7 +94,7 @@ The OpenCAN library, the device plugins and Testbench are provided AS IS with NO
 
 
 == Build ==
-Projects are built using Qt QMake and a C++ compiler.
+Projects are built using Qt QMake and a C++ compiler.  Qt Creator is the best IDE for building OpenCAN, Testench and all of the plugins.
 
 Specific build instructions can be found at docs/index.html
 
