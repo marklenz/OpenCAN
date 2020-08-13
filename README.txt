@@ -88,7 +88,7 @@ The OpenCAN library as well as the LinCAN and PCAN device plugins are distribute
 
 Testbench and the SimCAN device plugin are distributed under the GNU General Public License (GPL) version 3.0 and may be used under version 3.0 of the GPL or any later version.
 
-Commercial licenses can be provided for any or all of the software distributed in this OpenCAN package. Please contact us at sales@codeofintelligence.com for more information.
+Commercial licenses can be provided for any or all of the software distributed in this OpenCAN package. 
 
 The OpenCAN library, the device plugins and Testbench are provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
