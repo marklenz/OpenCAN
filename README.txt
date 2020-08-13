@@ -52,7 +52,7 @@ Testbench is not required to use the SimCAN device plugin. Any two or more appli
 
 
 == Requirements ==
-Qt 4.6+/5.0+ (http://qt.nokia.com)
+Qt 4.6+/5.0+ (http://www.qt.io)
    The OpenCAN library and device plugins only require Qt's QtCore component
    Testbench requires the additional QtWidgets component for Qt5 or the QtGui component for Qt4
 
