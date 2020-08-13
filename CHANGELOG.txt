@@ -1,0 +1,90 @@
+xxxxxxxx v0.8  Added SimCAN IPC device plugin for simulating a CAN bus
+
+                                Put doxygen documentation on the website
+                                Consider separating the distribution of Testbench from OpenCAN to clarify and enhance marketing for both and increase OpenCAN "footprint" (e.g., two webpages, one for OpenCAN and one for Testbench)
+                                Clean up SimCAN code, TODOs, etc.
+                                Make sure OPENCAN_EXPORT works on Windows for Qt 4 and 5 - was commented out in occore.h
+                                Figure out if there's a lag in receive window when turning off ECU while still listening on Windows
+
+                                Filters with different signals emitted by OcDevice or a signal with a varying parameter
+                                Implement message filters for an OcDevice that implement the UI for TestBench's filters and possibly others like PCAN-Basic
+
+                                Save received CAN messages to file using a data logging backend, so a window doesn't need to be displayed
+                                Load saved messages and playback, or allow messages in a window to be played back (PCAN-Trace)
+                                Add ability to send CAN messages at user-specified time intervals
+                                Add ability to change the number of milliseconds to check for received messages in autonomous mode?
+                                Add SimLink feature to link a SimCAN bus to a hardware bus, etc. PCAN-Basic
+
+                                Add PingCAN BusTest that sends a message once a second unprompted and echos any message sent on the bus
+                                    Do this as a very simple example of using the SimCAN driver and OpenCAN in general
+                                    Should BusTest use a specific message ID to filter messages? Probably
+                                    Could have it turn LEDs on and off or something
+                                Create a command line executable in addition to or instead of BusTest
+                                    Send a message on can bus using first device (default), device index or name
+                                    Log received messages to a file using first device (default), device index or name
+                                        Can we know if other OpenCAN programs, like say another instance of the cmd exec, send a message?
+                                    Simple example of using OpenCAN instead of Testbench which will get more complex
+
+                                From user email: "It would be nice if OpenCAN (testbench) would have a more sophisticated GUI. I would like to have:
+                                - message filters [already supported]
+                                - J1939 support
+                                - export mode
+                                - import mode
+                                - CANopen support (eds file parsing, node send/recieve/status)"
+
+
+
+                                +Need to store whether message is extended or not in OcSimCanDevice
+                                +Add SocketCAN device plugin - this is the standard Linux CAN driver since kernel 2.6.25 (https://gitorious.org/linux-can) - needs libsocketcan
+                                +Add Linux support to PCAN-Basic plugin
+                                +Add an OpenCAN namespace? only if Qt 5 uses one
+                                +Add PCAN-Basic device plugin
+                                +Add ability to set baud rate to arbitrary bits per second in Testbench if supported by driver
+                                +Look for ocplugins in application path as well as OPENCAN_DIR, so apps don't need to run from OpenCAN directory
+                                +Reorganize at least the OpenCAN library code into a src directory so the source files don't overshadow other files/folders
+                                +Figure out if baud rate should be a dropdown, is there a finite number of rates or any up to 1 Mbit/sec?
+                                +Make sure the autonomous is easy to understand and efficient
+                                +Double-check OcDevice::timerEvent() for how timestamp rollover is handled
+                                +Move the entire timestamp calculation out to Testbench as it should never have been in the driver!
+                                +Replace slots with Q_SLOTS and signals with Q_SIGNALS in public headers (http://qt-project.org/doc/qt-5/signalsandslots.html)
+                                +Finish getting rid of copy for loops and replacing with std::copy
+                                +Make sure menu and everything else still look correct on Linux/Windows
+                                +Need to check if everything compiles on Qt 4 without change
+                                +Replaced ReceiveWindow's QTextEdit with QPlainTextEdit and set maximumBlockCount to improve efficiency
+                                +Wrap string literals with QStringLiteral
+                                +Modified the OcDevice::getMessage method to clarify and simplify memory management
+                                +Use monospace font for CAN receive window
+                                +Ported to Qt 5
+                                +API changes:
+                                    OcMessage now stores the timestamp as a QTime instead of a quint32 to simplify the interpretation and comparison of timestamps
+                                    OcDevice::getMessage() and the messageReceived() signal now use a reference to an OcMessage instead of a pointer to clarify and simplify memory management
+                                    OcDevice refactored to simplify writing new plugins and using OcDevices
+                                        Removed receivedMessage(), simply check getMessage() return value
+                                        Created protected methods for implementing device startup/shutdown
+09132011 v0.7	Added runtime support for switching between CAN 2.0b extended and standard
+				Autonomous message polling now completely empties the receive queue every poll
+				Fixed Windows PCAN plugin continually sending CAN messages
+				Fixed a compiler warning when using MingW on Windows
+02162011 v0.6	Improved drawing speed of Testbench receive message windows
+				Fixed Testbench crash when no plugin is loaded
+				Fixed PEAK PCAN plugin not setting baud rate in Windows
+				Fixed PEAK PCAN plugin connect status in Windows
+				Clarified plugin loading and added troubleshooting tips
+02012011 v0.5	Improved support for multiple devices
+				Improved plugin and device information
+				Added support for changing baud rate in Testbench
+				Show CAN message timestamps in Testbench receive windows
+				Improved string processing efficieny by using Qt fast string concat
+				Testbench UI polish
+				Updated documentation and added compile documentation
+08302010 v0.4	Added support for providing device and plugin information
+				Added a method for retrieving the version of OpenCAN during runtime
+				Testbench UI overhaul adding filters to receive messages
+				Added a plugin dialog to Testbench
+07292010 v0.3	Added support for user-friendly device descriptions
+				Small increase in performance from a change of data structures
+				Made Win32/64 QMake project files more general
+				Minor documentation updates
+07162010 v0.2	Removed delay in startup of PEAK PCAN Linux device to prevent crash on device startup (crash fixed in driver v6.20)
+				Minor documentation updates
+06182010 v0.1	Initial release
