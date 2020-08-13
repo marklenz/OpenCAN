@@ -109,6 +109,6 @@ Thank you for using OpenCAN!
 
 
 
-Copyright (C) 2005-2014 Code of Intelligence, LLC.
+Copyright (C) 2005-2020 Code of Intelligence, LLC.
 (http://www.codeofintelligence.com)
 Contact: contact@opencan.org
